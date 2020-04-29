@@ -1,21 +1,21 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+	"fmt"
+	"gobbs/pkg/setting"
+	"gobbs/routes"
 	"net/http"
 )
 
 func main() {
-	r := gin.Default()
-	//加载模板
-	r.LoadHTMLGlob("views/*")
-	//处理静态资源
-	//r.StaticFS("/asset", http.Dir("public"))
-	r.Static("/asset", "./public")
-	r.GET("/index", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl", gin.H{
-			"title": "Hello Gin",
-		})
-	})
-	r.Run() // 监听并在 0.0.0.0:8080 上启动服务
+	router := routes.InitRouter()
+	//r.Run() // 监听并在 0.0.0.0:8080 上启动服务
+	s := &http.Server{
+		Addr:           fmt.Sprintf(":%d", setting.HTTPPort),
+		Handler:        router,
+		ReadTimeout:    setting.ReadTimeout,
+		WriteTimeout:   setting.WriteTimeout,
+		MaxHeaderBytes: 1 << 20,
+	}
+	s.ListenAndServe()
 }

@@ -49,6 +49,8 @@ func LoadApp() {
 	if err != nil {
 		log.Fatalf("Fail to get section 'app':%v", err)
 	}
+	// Jwt加密
 	JwtSecret = sec.Key("JWT_SECRET").MustString("!@)*#)!@U#@*!@!)")
+	// 分页
 	PageSize = sec.Key("PAGE_SIZE").MustInt(10)
 }
