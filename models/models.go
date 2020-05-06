@@ -3,11 +3,12 @@ package models
 import (
 	"fmt"
 	"github.com/jinzhu/gorm"
-	"gobbs/pkg/setting"
-	"log"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
+	"os"
+	"time"
 )
 
-var db *gorm.DB
+var DB *gorm.DB
 
 type Model struct {
 	Id         int    `gorm:"primary_key" json:"id"`
@@ -15,38 +16,23 @@ type Model struct {
 	Updated_at string `json:"updated_at"`
 }
 
-func init() {
-	var (
-		err                                               error
-		dbType, dbName, user, password, host, tablePrefix string
-	)
-	sec, err := setting.Cfg.GetSection("database")
-	if err != nil {
-		log.Fatalf(2, "Fail to get section 'database':%v", err)
-	}
-	dbType = sec.Key("TYPE").String()
-	dbName = sec.Key("NAME").String()
-	user = sec.Key("USER").String()
-	password = sec.Key("PASSWORD").String()
-	host = sec.Key("HOST").String()
-	tablePrefix = sec.Key("TABLE_PREFIX").String()
-	db, err = gorm.Open(dbType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8parseTime=True&loc=Local",
-		user,
-		password,
-		host,
-		dbName,
-	))
-	if err != nil {
-		log.Println(err)
-	}
-	//gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
-	//	return tablePrefix + defaultTableName
-	//}
-	db.SingularTable(true)
+func Init() {
+
+	db, err := gorm.Open("mysql", os.Getenv("MYSQL_DSN"))
+
+	// 开启Log
 	db.LogMode(true)
-	db.DB().SetMaxIdleConns(10)
-	db.DB().SetMaxOpenConns(100)
-}
-func CloseDB() {
-	defer db.Close()
+	if err != nil {
+		panic(fmt.Sprintf("MySQL 连接异常！ 错误信息: %s", err))
+	}
+
+	//设置连接池
+	//空闲
+	db.DB().SetMaxIdleConns(300)
+	//打开
+	db.DB().SetMaxOpenConns(500)
+	//超时
+	db.DB().SetConnMaxLifetime(time.Second * 30)
+
+	DB = db
 }

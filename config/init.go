@@ -5,7 +5,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"gitlab.com/go-box/pongo2gin"
+	"gobbs/cache"
 	"gobbs/middlewares"
+	"gobbs/models"
 	"gobbs/routes"
 	"os"
 	"path/filepath"
@@ -36,8 +38,7 @@ func Init() *gin.Engine {
 	route.StaticFile("/favicon.ico", filepath.Join(base, "static", "favicon.ico"))
 
 	// 加载路由
-	routes.InitRouter(route.Group("web"))
-
+	routes.WebRouter(route.Group("/"))
 	if os.Getenv("plugin") == "1" {
 		// 数据库连接 （MySQL
 		models.Init()

@@ -7,6 +7,7 @@ require (
 	github.com/gin-contrib/sessions v0.0.3 // indirect
 	github.com/gin-gonic/gin v1.6.2
 	github.com/go-ini/ini v1.55.0
+	github.com/go-redis/redis v6.15.7+incompatible // indirect
 	github.com/go-sql-driver/mysql v1.5.0 // indirect
 	github.com/golang/protobuf v1.4.0 // indirect
 	github.com/gorilla/sessions v1.2.0 // indirect

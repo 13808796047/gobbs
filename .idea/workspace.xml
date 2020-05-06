@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41b6041a-c9e3-4a1f-b656-8b04788eb605" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/init.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/index.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middlewares/session.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cache/Redis.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/init.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/init.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/models.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/models.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,6 +86,10 @@
       <screen x="0" y="23" width="1855" height="1057" />
     </state>
     <state x="909" y="217" key="#Inspections/0.23.1855.1057@0.23.1855.1057" timestamp="1588169430077" />
+    <state x="2596" y="340" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588749320638">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2596" y="340" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1588749320638" />
     <state x="818" y="190" key="SettingsEditor" timestamp="1588168896634">
       <screen x="0" y="23" width="1855" height="1057" />
     </state>

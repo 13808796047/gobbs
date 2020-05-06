@@ -5,8 +5,7 @@ import (
 	"gobbs/controllers"
 )
 
-func InitRouter(r *gin.RouterGroup) {
-
+func WebRouter(r *gin.RouterGroup) {
 	// 主页
 	r.GET("/", controllers.Index)
 }
